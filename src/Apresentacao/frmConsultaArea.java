@@ -54,6 +54,8 @@ public class frmConsultaArea extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         lblTempoOrde = new javax.swing.JLabel();
         btnMAreaDesmatada = new javax.swing.JButton();
+        lblAno = new javax.swing.JLabel();
+        txFAno = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,7 +81,7 @@ public class frmConsultaArea extends javax.swing.JDialog {
 
         jLabel1.setText("Tempo para Ordenação");
 
-        lblTempoOrde.setText("ms: ");
+        lblTempoOrde.setText("ms");
 
         btnMAreaDesmatada.setText("Buscar Por Maior Area Desmatada");
         btnMAreaDesmatada.addActionListener(new java.awt.event.ActionListener() {
@@ -88,24 +90,32 @@ public class frmConsultaArea extends javax.swing.JDialog {
             }
         });
 
+        lblAno.setText("Ano");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addComponent(lblAno)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txFAno, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAreaDesmatada)
                 .addGap(18, 18, 18)
+                .addComponent(btnMAreaDesmatada)
+                .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTempoOrde, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAreaDesmatada)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnMAreaDesmatada)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                        .addComponent(lblTempoOrde, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,14 +123,16 @@ public class frmConsultaArea extends javax.swing.JDialog {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAreaDesmatada)
-                    .addComponent(btnMAreaDesmatada))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(btnMAreaDesmatada)
+                    .addComponent(txFAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAno))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTempoOrde, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5))
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -129,7 +141,10 @@ public class frmConsultaArea extends javax.swing.JDialog {
     private void btnAreaDesmatadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreaDesmatadaActionPerformed
         // TODO add your handling code here:
         Modelo.Controle controle = new Modelo.Controle();
-        Estatico.listaRe = controle.pesquisarPorDesmatamento();
+        if(txFAno.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Por Favor digite um Ano Valido.");
+        else  
+            Estatico.listaRe = controle.pesquisarPorDesmatamento(txFAno.getText());
         if (!controle.getMensagem().equals(""))
         {
             JOptionPane.showMessageDialog(null, controle.getMensagem());
@@ -151,7 +166,10 @@ public class frmConsultaArea extends javax.swing.JDialog {
     private void btnMAreaDesmatadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMAreaDesmatadaActionPerformed
         // TODO add your handling code here:
         Modelo.Controle controle = new Modelo.Controle();
-        Estatico.listaRe = controle.pesquisarMaiorPorDesmatamento();
+        if(txFAno.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Por Favor digite um Ano Valido.");
+        else
+            Estatico.listaRe = controle.pesquisarMaiorPorDesmatamento(txFAno.getText());
         if (!controle.getMensagem().equals(""))
         {
             JOptionPane.showMessageDialog(null, controle.getMensagem());
@@ -216,7 +234,9 @@ public class frmConsultaArea extends javax.swing.JDialog {
     private javax.swing.JButton btnMAreaDesmatada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAno;
     private javax.swing.JLabel lblTempoOrde;
     private javax.swing.JTable tblResultado;
+    private javax.swing.JTextField txFAno;
     // End of variables declaration//GEN-END:variables
 }

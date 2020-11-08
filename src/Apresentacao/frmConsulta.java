@@ -47,12 +47,11 @@ public class frmConsulta extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblResultado = new javax.swing.JTable();
-        lblAno = new javax.swing.JLabel();
-        txFAno = new javax.swing.JTextField();
         btnBuscarAno = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         lblTempoOrde = new javax.swing.JLabel();
+        lblTempoOrde1 = new javax.swing.JLabel();
+        lblTempoOrde2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,9 +68,7 @@ public class frmConsulta extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tblResultado);
 
-        lblAno.setText("Ano");
-
-        btnBuscarAno.setText(" Buscar Pelo Ano");
+        btnBuscarAno.setText(" Buscar Por Menor Ano");
         btnBuscarAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarAnoActionPerformed(evt);
@@ -79,6 +76,10 @@ public class frmConsulta extends javax.swing.JDialog {
         });
 
         jLabel1.setText("Tempo para Ordenação");
+
+        lblTempoOrde1.setText("ms: ");
+
+        lblTempoOrde2.setText("ms ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,44 +89,43 @@ public class frmConsulta extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(lblAno)
-                                .addGap(29, 29, 29)
-                                .addComponent(txFAno, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(btnBuscarAno))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblTempoOrde, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 12, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTempoOrde, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblTempoOrde2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBuscarAno)))
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(228, 228, 228)
+                    .addComponent(lblTempoOrde1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(229, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAno)
-                    .addComponent(txFAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarAno))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(btnBuscarAno)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(lblTempoOrde2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblTempoOrde, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(178, 178, 178)
+                    .addComponent(lblTempoOrde1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(179, Short.MAX_VALUE)))
         );
 
         pack();
@@ -134,10 +134,10 @@ public class frmConsulta extends javax.swing.JDialog {
     private void btnBuscarAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAnoActionPerformed
         Modelo.Controle controle = new Modelo.Controle();
          
-        if(txFAno.getText().equals(""))
-            Estatico.listaDesmatamento = controle.pesquisarTudo();
-        else
-            Estatico.listaDesmatamento = controle.pesquisarDesmatamentoAno(txFAno.getText());
+       
+            //Estatico.listaDesmatamento = controle.pesquisarTudo();
+        
+        Estatico.listaDesmatamento = controle.pesquisarTudo();
         if (!controle.getMensagem().equals(""))
         {
             JOptionPane.showMessageDialog(null, controle.getMensagem());
@@ -150,7 +150,7 @@ public class frmConsulta extends javax.swing.JDialog {
         if (Estatico.listaDesmatamento.size() > 1)
         {
             DesmatamentoAmaz desma = Estatico.listaDesmatamento.get(1);
-            txFAno.setText(desma.getAno().toString());
+            
             preencherTabela();
             if(Estatico.listaResultado.size() > 1)
                 lblTempoOrde.setText(Estatico.tempoLevado.toString());
@@ -204,10 +204,9 @@ public class frmConsulta extends javax.swing.JDialog {
     private javax.swing.JButton btnBuscarAno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblAno;
     private javax.swing.JLabel lblTempoOrde;
+    private javax.swing.JLabel lblTempoOrde1;
+    private javax.swing.JLabel lblTempoOrde2;
     private javax.swing.JTable tblResultado;
-    private javax.swing.JTextField txFAno;
     // End of variables declaration//GEN-END:variables
 }

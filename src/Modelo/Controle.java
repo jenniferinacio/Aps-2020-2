@@ -9,35 +9,6 @@ public class Controle {
     
     private String mensagem;
     DAL.DesmatamentoAmazDAO desmatamentoDAO = new DAL.DesmatamentoAmazDAO();
-    public List<DesmatamentoAmaz> pesquisarDesmatamentoAno(String ano)
-    {
-        
-         this.mensagem = "";
-        
-        List<String> listaDados = new ArrayList<>();
-        listaDados.add("0");
-        listaDados.add(ano);
-        listaDados.add("");
-        listaDados.add("");
-        
-        Validacao validacao = new Validacao(ano);
-        List<DesmatamentoAmaz> desmatamentoAmaz = new ArrayList<>();
-        List<Integer> ordenacao = new ArrayList<>();
-        if (validacao.getMensagem().equals(""))
-        {
-            DesmatamentoAmaz desma = new DesmatamentoAmaz();
-            desma.setAno(validacao.getAno());
-            desmatamentoAmaz = desmatamentoDAO.pesquisarDesmatamentoAno(desma);
-            
-           
-            this.mensagem = desmatamentoDAO.getMensagem();
-        }
-        else
-        {
-            this.mensagem = validacao.getMensagem();
-        }
-        return desmatamentoAmaz;
-    }
     
     public List<DesmatamentoAmaz> pesquisarTudo()
     {
@@ -45,13 +16,14 @@ public class Controle {
             List<DesmatamentoAmaz> desmaA = new ArrayList<>();
             DesmatamentoAmaz desma = new DesmatamentoAmaz();
             List<Integer> resultado = new ArrayList<>();
+            
 
             desmaA = desmatamentoDAO.pesquisarTudo(desma);
              
                
                 long tempoInicial = System.currentTimeMillis();
 
-                  SelectionSort.selectionSort(desmaA);
+                SelectionSort.selectionSort(desmaA);
 
                 long tempoFinal = System.currentTimeMillis();
                 
@@ -62,17 +34,32 @@ public class Controle {
            
             
             
-              return Estatico.listaResultado;  
+            return Estatico.listaResultado;  
      
     
     }
-    public int[] pesquisarPorDesmatamento()
+    public int[] pesquisarPorDesmatamento(String ano)
     {
         List<DesmatamentoAmaz> desmaA = new ArrayList<>();
-        DesmatamentoAmaz desma = new DesmatamentoAmaz();
+        //DesmatamentoAmaz desma = new DesmatamentoAmaz();
         List<Integer> resultado = new ArrayList<>();
+        List<String> listaDados = new ArrayList<>();
+        listaDados.add("0");
+        listaDados.add(ano);
+        listaDados.add("");
+        listaDados.add("");
+        
+        Validacao validacao = new Validacao(ano);
+        {
+            DesmatamentoAmaz desma = new DesmatamentoAmaz();
+            desma.setAno(validacao.getAno());
+            desmaA = desmatamentoDAO.pesquisarDesmatamentoAno(desma);
+            
+           
+            this.mensagem = desmatamentoDAO.getMensagem();
+        }
 
-        desmaA = desmatamentoDAO.pesquisarTudo(desma);
+        //desmaA = desmatamentoDAO.pesquisarTudo(desma);
         
         int[] ret = new int[desmaA.size()];
         for (int i=0; i < ret.length; i++)
@@ -94,13 +81,28 @@ public class Controle {
         return Estatico.listaRe;  
     
     }
-    public int[] pesquisarMaiorPorDesmatamento()
+    public int[] pesquisarMaiorPorDesmatamento(String ano)
     {
-         List<DesmatamentoAmaz> desmaA = new ArrayList<>();
-        DesmatamentoAmaz desma = new DesmatamentoAmaz();
+        List<DesmatamentoAmaz> desmaA = new ArrayList<>();
+        //DesmatamentoAmaz desma = new DesmatamentoAmaz();
         List<Integer> resultado = new ArrayList<>();
+        List<String> listaDados = new ArrayList<>();
+        listaDados.add("0");
+        listaDados.add(ano);
+        listaDados.add("");
+        listaDados.add("");
+        
+        Validacao validacao = new Validacao(ano);
+        {
+            DesmatamentoAmaz desma = new DesmatamentoAmaz();
+            desma.setAno(validacao.getAno());
+            desmaA = desmatamentoDAO.pesquisarDesmatamentoAno(desma);
+            
+           
+            this.mensagem = desmatamentoDAO.getMensagem();
+        }
 
-        desmaA = desmatamentoDAO.pesquisarTudo(desma);
+        //desmaA = desmatamentoDAO.pesquisarTudo(desma);
         int[] ret = new int[desmaA.size()];
         for (int i=0; i < ret.length; i++)
         {

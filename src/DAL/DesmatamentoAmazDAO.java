@@ -53,7 +53,7 @@ public class DesmatamentoAmazDAO {
         try
         {
             Connection con = conexao.conectar();
-            String instrucaoSql = "select top 50 * from DesmatamentoAmaz";
+            String instrucaoSql = "select top 20 * from DesmatamentoAmaz";
             PreparedStatement stmt = con.prepareStatement(instrucaoSql);
            
             ResultSet resultset = stmt.executeQuery();
